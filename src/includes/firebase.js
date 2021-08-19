@@ -18,6 +18,9 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 // auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 const db = firebase.firestore();
+
+db.enablePersistence().catch((err) => console.log(`Firebase persistence error ${err.code}`));
+
 const storage = firebase.storage();
 
 const userCollection = db.collection('users');

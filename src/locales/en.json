@@ -1,3 +1,25 @@
 {
-  "message": "hello i18n !!"
+  "header": {
+    "about": "About",
+    "logout": "Logout",
+    "manage": "Manage",
+    "music": "Music",
+    "signin": "Login / Register"
+  },
+  "home": {
+    "listen": "Listen to Great Music!",
+    "song": "Songs"
+  },
+  "manage": {
+    "drop": "Drop your files here",
+    "my_song": "My Songs",
+    "upload": "Upload"
+  },
+  "register": {
+    "TOS": "Terms of Service",
+    "accept": "I accept Vue-Music's {0}"
+  },
+  "song": {
+    "comment_count": "No Comments | 1 Comment | {count} Comments"
+  }
 }

@@ -1,10 +1,6 @@
 <template>
   <!-- Auth Modal -->
-  <div
-    class="fixed z-10 inset-0 overflow-y-auto"
-    :class="{ hidden: !authModalShow }"
-    id="modal"
-  >
+  <div class="fixed z-10 inset-0 overflow-y-auto" :class="{ hidden: !authModalShow }" id="modal">
     <div
       class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center
       sm:block sm:p-0"
@@ -14,9 +10,7 @@
       </div>
 
       <!-- This element is to trick the browser into centering the modal contents. -->
-      <span class="hidden sm:inline-block sm:align-middle sm:h-screen"
-        >&#8203;</span
-      >
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
 
       <div
         class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden
@@ -28,10 +22,7 @@
           <div class="flex justify-between items-center pb-4">
             <p class="text-2xl font-bold">Your Account</p>
             <!-- Modal Close Button -->
-            <div
-              class="modal-close cursor-pointer z-50"
-              @click.prevent="toggleAuthModal"
-            >
+            <div class="modal-close cursor-pointer z-50" @click.prevent="toggleAuthModal">
               <i class="fas fa-times"></i>
             </div>
           </div>
@@ -95,11 +86,14 @@ export default {
     // authModalShow() {
     //   return this.$store.getters.authModalShow;
     // },
-    ...mapState(['authModalShow']),
+    // ...mapState(['authModalShow']), this method wont work if we used modules in vuex
     // to use alias
     // ...mapState({
     //   modal: 'authModalShow',
     // }),
+    ...mapState({
+      authModalShow: (state) => state.auth.authModalShow,
+    }),
   },
 };
 </script>

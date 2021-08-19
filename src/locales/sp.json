@@ -1,0 +1,25 @@
+{
+  "header": {
+    "about": "Acerca de",
+    "logout": "Cerrar sesión",
+    "manage": "Gestionar",
+    "music": "Música",
+    "signin": "Iniciar sesión / Registrarse"
+  },
+  "home": {
+    "listen": "Escuche buena música!",
+    "song": "Canciones"
+  },
+  "manage": {
+    "drop": "Suelta tus archivos aquí",
+    "my_song": "Mis canciones",
+    "upload": "Subir"
+  },
+  "register": {
+    "TOS": "Términos de servicio",
+    "accept": "Acepto Vue-Music's {0}"
+  },
+  "song": {
+    "comment_count": "{count} Comments"
+  }
+}

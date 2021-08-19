@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white rounded border border-gray-200 relative flex flex-col">
     <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
-      <span class="card-title">Upload</span>
+      <span class="card-title">{{ $t('manage.upload') }}</span>
       <i class="fas fa-upload float-right text-green-400 text-2xl"></i>
     </div>
     <div class="p-6">
@@ -19,7 +19,7 @@
         @dragover.prevent.stop="is_dragover = true"
         @drop.prevent.stop="uploadSong"
       >
-        <h5>Drop your files here</h5>
+        <h5>{{ $t('manage.drop') }}</h5>
       </div>
       <input type="file" multiple @change="uploadSong" />
       <hr class="my-6" />
@@ -67,6 +67,18 @@ export default {
         if (file.type !== 'audio/mpeg') {
           return;
         }
+
+        if (!navigator.onLine) {
+          this.uploads.push({
+            task: {},
+            current_progress: 1000,
+            name: file.name,
+            variant: 'bg-red-400',
+            icon: 'fas fa-times',
+            text_class: 'text-red-400',
+          });
+          return;
+        }
         // root reference
         const storageRef = storage.ref(); // gives the bucket vue-music-9e624.appspot.com
         // additional reference for each file
@@ -89,7 +101,6 @@ export default {
           (snapshot) => {
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             this.uploads[uploadIndex].current_progress = progress;
-            console.log(this.uploads);
           },
           (error) => {
             this.uploads[uploadIndex].variant = 'bg-red-400';

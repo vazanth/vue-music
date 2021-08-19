@@ -8,28 +8,41 @@
         :to="{ name: 'home' }"
         exact-active-class="no-active"
       >
-        Music
+        {{ $t('header.music') }}
       </router-link>
       <div class="flex flex-grow items-center">
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
           <li>
-            <router-link class="px-2 text-white" :to="{ name: 'about' }">About</router-link>
+            <router-link class="px-2 text-white" :to="{ name: 'about' }">
+              {{ $t('header.about') }}
+            </router-link>
           </li>
           <li v-if="!userLoggedIn">
-            <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal"
-              >Login / Register</a
-            >
+            <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal">{{
+              $t('header.signin')
+            }}</a>
           </li>
           <template v-else>
             <li>
-              <router-link class="px-2 text-white" :to="{ name: 'manage' }">Manage</router-link>
+              <router-link class="px-2 text-white" :to="{ name: 'manage' }">
+                {{ $t('header.manage') }}
+              </router-link>
             </li>
             <li>
-              <a class="px-2 text-white" href="#" @click.prevent="logout">Logout</a>
+              <a class="px-2 text-white" href="#" @click.prevent="logout">
+                {{ $t('header.logout') }}
+              </a>
             </li>
           </template>
+        </ul>
+        <ul class="flex flex-row mt-1 ml-auto">
+          <li>
+            <a class="text-white px-2" href="#" @click.prevent="changeLocale">
+              {{ currentLocale }}
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -56,12 +69,21 @@ export default {
         this.$router.push({ name: 'home' });
       }
     },
+    changeLocale() {
+      this.$i18n.locale = this.$i18n.locale === 'en' ? 'sp' : 'en';
+    },
     // toggleAuthModal() {
     //   this.$store.commit('toggleAuthModal');
     // },
   },
   computed: {
-    ...mapState(['userLoggedIn']),
+    // ...mapState(['userLoggedIn']), this method wont work if we used modules in vuex
+    ...mapState({
+      userLoggedIn: (state) => state.auth.userLoggedIn,
+    }),
+    currentLocale() {
+      return this.$i18n.locale === 'sp' ? 'Spanish' : 'English';
+    },
   },
 };
 </script>
