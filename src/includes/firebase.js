@@ -4,12 +4,7 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAP69LbxnlDWKPbcxV14Tuz02K9gapOkV4',
-  authDomain: 'vue-music-9e624.firebaseapp.com',
-  projectId: 'vue-music-9e624',
-  storageBucket: 'vue-music-9e624.appspot.com',
-  messagingSenderId: '331027768497',
-  appId: '1:331027768497:web:77d8ebdca9bf0e0854ee90',
+  // config details
 };
 
 // Initialize Firebase
